@@ -24,6 +24,15 @@
     <Compile Include="funcs.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="main.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="special.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="normal.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="read.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

@@ -3,11 +3,11 @@
 import requests
 import json
 import functools
-from funcs import reversed_cmp 
+from funcs import reversed_cmp
 
 
 url = 'https://api.shisanshui.rtxux.xyz/game/open'
-headers = {'X-Auth-Token': "a52b832e-a7f9-4061-abcd-79f19db27a02"}
+headers = {'X-Auth-Token': "01b19af4-0869-4157-af76-3d653d510a28"}
 response = requests.post(url,  headers = headers) 
 response_dict = response.json()
 card = response_dict['data']['card'].split(' ')

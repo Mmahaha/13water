@@ -24,4 +24,16 @@ def reversed_cmp(x, y):
         return -1
     return 0
 
-
+def flag(x):
+    if(x[1]=='A'):
+        return 14
+    elif(x[1]=='1'):
+        return 10
+    elif(x[1]=='J'):
+        return 11
+    elif(x[1]=='Q'):
+        return 12
+    elif(x[1]=='K'):
+        return 13
+    else:
+        return ord(x[1])-48

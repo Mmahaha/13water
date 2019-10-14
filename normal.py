@@ -75,7 +75,7 @@ def hulu(cards): #传入按大小排序的牌
     d = cards_dels[0:1]
     for i in range(len(cards_dels)-1):
         if flag(cards_dels[i+1]) == flag(cards_dels[i]):
-            d.append(cards[i+1])
+            d.append(cards_dels[i+1])
             if len(d)==2:
                 break
         else:
@@ -126,7 +126,7 @@ def liangdui(cards):
         return 0
     cards_deldd = [card for card in cards_deld if card not in set(d2)]
     
-    return d+d2+cards_deldd[0:1]
+    return d+d2+cards_deldd[-1:]
 
 def duizi(cards):
     d = cards[0:1]
@@ -140,9 +140,7 @@ def duizi(cards):
     if len(d)!=2:
         return 0
     cards_deld = [card for card in cards if card not in set(d)]
-    return d+cards_deld[0:3]
+    return d+cards_deld[-3:]
 
-
-
-cards = ['*2', '#3', '&4', '$4', '#5', '*5', '$6', '&6', '&6', '*8', '*9', '$J', '$Q']  #test样例
-print(hulu(cards))
+def danzhang(cards):
+    return cards[0:5]

@@ -1,4 +1,17 @@
-from funcs import flag
+def flag(x):
+    if(x[1]=='A'):
+        return 14
+    elif(x[1]=='1'):
+        return 10
+    elif(x[1]=='J'):
+        return 11
+    elif(x[1]=='Q'):
+        return 12
+    elif(x[1]=='K'):
+        return 13
+    else:
+        return ord(x[1])-48
+
 def tonghua(cards): #传入按花色排序的牌
     count1 = 0
     count2 = 0
@@ -56,7 +69,13 @@ def zhadan(cards):  #传入按大小排序的牌
         else:
             a = cards[i+1:i+2]
     if len(a)==4:
-        return a
+        cards_dela = [card for card in cards if card not in set(a)][::-1]
+        single = cards_dela[0:1]
+        for i in range(len(cards_dela)):
+            if flag(cards_dela[i]) != flag(cards_dela[i+1]) and flag(cards_dela[i]) != flag(cards_dela[i-1]):
+                single = cards_dela[i:i+1]
+                break
+        return a+single
     else:
         return 0
 
@@ -71,12 +90,12 @@ def hulu(cards): #传入按大小排序的牌
             s = cards[i+1:i+2]
     if len(s)!=3:
         return 0
-    cards_dels = [card for card in cards if card not in set(s)] #删去葫芦后剩下的牌
+    cards_dels = [card for card in cards if card not in set(s)][::-1] #删去葫芦后剩下的牌
     d = cards_dels[0:1]
     for i in range(len(cards_dels)-1):
         if flag(cards_dels[i+1]) == flag(cards_dels[i]):
             d.append(cards_dels[i+1])
-            if len(d)==2:
+            if len(d)==2 and flag(cards_dels[i+1]) != flag(cards_dels[i+2]) and flag(cards_dels[i-1]) != flag(cards_dels[i]):
                 break
         else:
             d = cards_dels[i+1:i+2]
@@ -97,7 +116,7 @@ def santiao(cards):
         else:
             s = cards[i+1:i+2]
     if len(s)==3:
-        cards_dels = [card for card in cards if card not in set(s)]
+        cards_dels = [card for card in cards if card not in set(s)][::-1]
         return s+cards_dels[0:2]
     else:
         return 0
@@ -113,7 +132,7 @@ def liangdui(cards):
             d = cards[i+1:i+2]
     if len(d)!=2:
         return 0
-    cards_deld = [card for card in cards if card not in set(d)]
+    cards_deld = [card for card in cards if card not in set(d)][::-1]
     d2 = cards_deld[0:1]
     for i in range(len(cards_deld)-1):
         if flag(cards_deld[i+1]) == flag(cards_deld[i]):
@@ -125,8 +144,7 @@ def liangdui(cards):
     if len(d2)!=2:
         return 0
     cards_deldd = [card for card in cards_deld if card not in set(d2)]
-    
-    return d+d2+cards_deldd[-1:]
+    return d+d2+cards_deldd[:1]
 
 def duizi(cards):
     d = cards[0:1]
@@ -142,5 +160,4 @@ def duizi(cards):
     cards_deld = [card for card in cards if card not in set(d)]
     return d+cards_deld[-3:]
 
-def danzhang(cards):
-    return cards[0:5]
+

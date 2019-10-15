@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>b6f9704e-0334-4960-a410-c0df4024d4fe</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>read.py</StartupFile>
+    <StartupFile>normal.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -27,10 +27,10 @@
     <Compile Include="main.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="api.py" />
     <Compile Include="normal.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="read.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

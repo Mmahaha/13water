@@ -174,4 +174,3 @@ def duizi(cards):
     cards_deld = [card for card in cards if card not in set(d)]
     return d + cards_deld[-3:]
 
-

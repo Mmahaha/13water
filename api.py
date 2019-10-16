@@ -5,7 +5,7 @@ import json
 
 
 def error_report(key):
-    dict = {
+    keys = {
         0: '成功',
         1001: '用户名已被使用',
         1002: '学号已绑定',
@@ -14,12 +14,11 @@ def error_report(key):
         2001: '未结束战局过多',
         2002: '出千！！！',
         2003: '不合法墩牌',
-        2003: '战局不存在或已结束',
         3001: '战局不存在或未结束',
         3002: '玩家不存在'
     }
-    if key in dict:
-        print(dict[key])
+    if key in keys:
+        print(keys[key])
     else:
         print('KeyError %d' % key)  # 出现未知错误码
 
@@ -205,19 +204,19 @@ class Player(object):
 
 
 # 战局详情
-    def get_history_detail(self, id):
-        def history_detail(token, id):
-            url = "https://api.shisanshui.rtxux.xyz/history/" + id
+    def get_history_detail(self, zjid):
+        def history_detail(token, _id):
+            url = "https://api.shisanshui.rtxux.xyz/history/" + _id
             headers = {
                 'x-auth-token': token
             }
             r = requests.get(url, headers=headers)
             return r
 
-        r = history_detail(self.token, id)
+        r = history_detail(self.token, zjid)
         status = r.json()['status']
         if status == 0:
-            data = r.json()['data']
+            print(r.json()['data'])
         else:
             print('get_history_detail failed!')
             error_report(status)

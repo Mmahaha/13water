@@ -74,7 +74,7 @@ def zhadan(cards):  # 传入按大小排序的牌
     if len(a) == 4:
         cards_dela = [card for card in cards if card not in set(a)][::-1]
         single = cards_dela[0:1]
-        for i in range(len(cards_dela)):
+        for i in range(len(cards_dela)-1):
             if flag(cards_dela[i]) != flag(cards_dela[i + 1]) and flag(cards_dela[i]) != flag(cards_dela[i - 1]):
                 single = cards_dela[i:i + 1]
                 break
@@ -82,8 +82,7 @@ def zhadan(cards):  # 传入按大小排序的牌
     else:
         return 0
 
-
-def hulu(cards):  # 传入按大小降序序的牌
+def zhao_san(cards):
     s = cards[0:1]
     for i in range(len(cards) - 1):
         if flag(cards[i + 1]) == flag(cards[i]):
@@ -92,6 +91,10 @@ def hulu(cards):  # 传入按大小降序序的牌
                 break
         else:
             s = cards[i + 1:i + 2]
+    return s
+
+def hulu(cards):  # 传入按大小降序序的牌
+    s = zhao_san(cards)
     if len(s) != 3:
         return 0
     cards_dels = [card for card in cards if card not in set(s)][::-1]  # 删去葫芦后剩下的牌并返回升序的牌
@@ -114,14 +117,7 @@ def hulu(cards):  # 传入按大小降序序的牌
 
 
 def santiao(cards):
-    s = cards[0:1]
-    for i in range(len(cards) - 1):
-        if flag(cards[i + 1]) == flag(cards[i]):
-            s.append(cards[i + 1])
-            if len(s) == 3:
-                break
-        else:
-            s = cards[i + 1:i + 2]
+    s = zhao_san(cards)
     if len(s) == 3:
         cards_dels = [card for card in cards if card not in set(s)][::-1]
         return s + cards_dels[0:2]
@@ -173,4 +169,3 @@ def duizi(cards):
         return 0
     cards_deld = [card for card in cards if card not in set(d)]
     return d + cards_deld[-3:]
-

@@ -78,7 +78,6 @@ class Player(object):
             error_report(status)
             print(r.text)
 
-
 # 登录
     def login(self):
         def login_(user, psw):

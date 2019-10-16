@@ -30,7 +30,6 @@ def reversed_cmp(x, y):
         return -1
     return 0
 
-
 def findAns(card):
     card_sort1 = sorted(card)
     card_sort2 = sorted(card, key=functools.cmp_to_key(reversed_cmp))

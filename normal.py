@@ -127,7 +127,7 @@ def santiao(cards):
         return s + cards_dels[0:2]
     else:
         return 0
-
+    
 
 def liangdui(cards):
     d = cards[0:1]

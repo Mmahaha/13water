@@ -27,6 +27,7 @@ def reversed_cmp(x, y):
         return -1
     return 0
 
+
 def flag(x):
     if (x[1] == 'A'):
         return 14
@@ -148,6 +149,7 @@ def zhao_san(cards):
 
 
 def hulu(cards):  # 传入按大小降序序的牌
+    find_flag = 0
     s = zhao_san(cards)
     if len(s) != 3:
         return 0
@@ -157,17 +159,19 @@ def hulu(cards):  # 传入按大小降序序的牌
         if flag(cards_dels[i + 1]) == flag(cards_dels[i]):
             d.append(cards_dels[i + 1])
             if len(d) == 2 and i != len(cards_dels) - 2 and flag(cards_dels[i + 1]) != flag(cards_dels[i + 2]) and flag(
-                    cards_dels[i - 1]) != flag(
-                cards_dels[i]) or (
-                    i == len(cards_dels) - 2 and flag(cards_dels[i]) == flag(cards_dels[i + 1])):  # 确保对子不会与其他牌凑成葫芦
+                    cards_dels[i - 1]) != flag(cards_dels[i]) or (
+                    i == len(cards_dels) - 2 and flag(cards_dels[i]) == flag(cards_dels[i + 1])):# 确保对子不会与其他牌凑成葫芦
                 break
             else:
+                find_flag = 1
+                dd = d[:]
                 d = cards_dels[i + 1:i + 2]
         else:
-
             d = cards_dels[i + 1:i + 2]
 
-    if len(d) != 2:
+    if len(d) != 2 and find_flag == 1:
+        return s + dd
+    elif len(d) != 2:
         return 0
     else:
         return s + d
@@ -226,3 +230,11 @@ def duizi(cards):
         return 0
     cards_deld = [card for card in cards if card not in set(d)]
     return d + cards_deld[-3:]
+
+
+if __name__ == '__main__':
+    cards = ['$4', '$5', '*7', '#7', '$A', '$8', '*9', '#10', '*8', '#K', '$2', '&7', '#8']
+    card_sort1 = sorted(cards)
+    card_sort2 = sorted(cards, key=functools.cmp_to_key(reversed_cmp))
+    card_sort3 = card_sort2[::-1]  # 表示大小降序
+    print(hulu(card_sort3))

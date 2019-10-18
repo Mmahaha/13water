@@ -170,7 +170,7 @@ class Player(object):
         r = requests.post(url, data=json.dumps(data), headers=headers)
         status = r.json()['status']
         if status == 0:
-            print('submit successful')
+            print('submit successfully')
         else:
             print('game_submit failed!')
             print(r.text)
@@ -200,13 +200,13 @@ class Player(object):
             print('get_history failed!')
             error_report(status)
             print(r.text)
-        return data
+        print(data)
 
 
 # 战局详情
     def get_history_detail(self, zjid):
         def history_detail(token, _id):
-            url = "https://api.shisanshui.rtxux.xyz/history/" + _id
+            url = "https://api.shisanshui.rtxux.xyz/history/" + str(_id)
             headers = {
                 'x-auth-token': token
             }

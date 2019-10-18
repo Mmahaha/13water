@@ -92,8 +92,6 @@ def main():
     img_background_screen_lobby = pygame.image.load('img/background/background_screen_lobby.png').convert()
     img_background_screen_rank = pygame.image.load('img/background/background_screen_rank.png').convert_alpha()
     img_background_screen_history = pygame.image.load('img/background/background_screen_history.png').convert_alpha()
-    img_background_screen_history_detail = pygame.image.load(
-        'img/background/background_screen_history_detail.png').convert_alpha()
     img_background_screen_game = pygame.image.load('img/background/background_screen_game.jpg').convert()
 
     # 加载扑克牌

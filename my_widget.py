@@ -1,6 +1,4 @@
 import pygame
-import string
-from sys import exit  # 向sys模块借一个exit函数用来退出程序
 
 GREEN = (0, 128, 128)
 BLUE = (0, 0, 128)
@@ -47,7 +45,7 @@ class TextList():
         y = self.y
         x = self.x
         index = self.p * self.limit
-        for row in range(self.limit):
+        for _row in range(self.limit):
             x = self.x
             text = ""
             if (index > len(self.data) - 1):
@@ -65,8 +63,8 @@ class TextList():
                     if item == 0:
                         text = str(dirt["id"])
                     elif item == 1:
-                        list = dirt["card"]
-                        text = list[0] + '  ' + list[1] + '  ' + list[2]
+                        _list = dirt["card"]
+                        text = _list[0] + '  ' + _list[1] + '  ' + _list[2]
                     else:
                         text = str(dirt["score"])
                 if self.flag == 2 and item == 1:
@@ -189,7 +187,7 @@ class TextBox():
             return False
 
 
-"""?"""
+
 
 
 def Laber(self, ttf, size, text, color):
@@ -198,7 +196,7 @@ def Laber(self, ttf, size, text, color):
     return textSurfaceObj
 
 
-"""?"""
+
 
 
 def Laber_draw(text, screen, x, y):
@@ -209,7 +207,7 @@ def Laber_draw(text, screen, x, y):
     screen.blit(textSurfaceObj, rect)
 
 
-"""出牌"""
+# 出牌
 
 
 def draw_card(screen, x, y, card_list=None, card_dirt=None):

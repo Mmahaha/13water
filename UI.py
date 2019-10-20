@@ -1,6 +1,5 @@
 # -*- coding=utf-8 -*-
 import pygame
-import string
 from my_widget import *
 from sys import exit  # 向sys模块借一个exit函数用来退出程序
 from funcs import *  # 含有组牌函数
@@ -109,7 +108,6 @@ def main():
     button_to_open_game = Button('img/button/to_open_game.png', 679, 273)
     button_to_screen_login = Button('img/button/to_screen_login.png', 688, 114)
     button_to_screen_register = Button('img/button/to_screen_register.png', 688, 252)
-    button_to_screen_lobby = Button('img/button/to_screen_lobby.png', 373, 348)
     button_to_screen_history = Button('img/button/to_screen_history.png', 660, 27)
     button_to_screen_rank = Button('img/button/to_screen_rank.png', 537, 27)
     button_back_to_screen_lobby = Button('img/button/back_to_screen_lobby.png', 0, 0)
@@ -252,16 +250,7 @@ def main():
                     if button_to_next_page.pressed(mouse):
                         if ((text_list_history.p + 1) * 5 <= len(history_data) - 1):
                             text_list_history.update(text_list_history.p + 1)
-                """
-                #  screen_history_detail
-                elif current_page == 8:
-                    if button_back_to_screen_lobby.pressed(mouse):
-                        current_page = 4
-                #   if button_to_next_page.pressed(mouse):
-                #         pass
-                #   if button_to_previous_page.pressed(mouse):
-                #         pass
-                """
+
             if event.type == pygame.MOUSEBUTTONUP:
                 pass
         # 在第n页，显示该页的所有组件
@@ -271,13 +260,11 @@ def main():
             for w in page[1]:
                 w.draw(screen)
             # 懒得写文本：“账号”“密码”
-
         elif current_page == 2:
             screen.blit(img_background_screen_lobby, (0, 0))
             for w in page[2]:
                 w.draw(screen)
-            # 懒得写文本：“账号”“密码” 
-
+            # 懒得写文本：“账号”“密码”
         elif current_page == 3:
             screen.blit(img_background_screen_lobby, (0, 0))
             for w in page[3]:

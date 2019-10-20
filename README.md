@@ -8,3 +8,6 @@
 > 编译方法：python UI.py
 >
 > 使用方法：用powershell在目录下输入'python UI.py'即可运行
+>
+> 可能需要安装pygame等模块
+> 安装方法:"pip install pygame"
